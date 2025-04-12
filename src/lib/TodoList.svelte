@@ -9,6 +9,8 @@
       deleteCompletedTodos()
     }
   }
+
+  let areAnyCompleted = $derived(todos.some(todo => todo.completed))
 </script>
 
 <div id="container">
@@ -16,6 +18,7 @@
     <div id="clean-container">
       <button
         onclick={confirmDelete}
+        disabled={!areAnyCompleted}
       >
         Eliminar completados 🚮
       </button>
