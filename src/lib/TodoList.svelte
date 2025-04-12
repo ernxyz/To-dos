@@ -12,13 +12,15 @@
 </script>
 
 <div id="container">
-  <div id="clean-container">
-    <button
-      onclick={confirmDelete}
-    >
-      Eliminar completados 🚮
-    </button>
-  </div>
+  {#if todos.length !== 0}
+    <div id="clean-container">
+      <button
+        onclick={confirmDelete}
+      >
+        Eliminar completados 🚮
+      </button>
+    </div>
+  {/if}
   <ul>
     {#if todos.length === 0}
       <div id="no-tasks">
@@ -43,7 +45,7 @@
     padding-bottom: 2vh;
     scroll-behavior: auto;
     overflow-y: scroll;
-    height: 76.3vh;
+    height: 74vh;
     width: 100vw;
     border-radius: 20px 20px 0 0;
   }
@@ -63,13 +65,16 @@
 
   #clean-container {
     text-align: center;
+    position: sticky;
+    top: 0;
+    background-color: lightgray;
   }
 
   button {
     border: none;
-    padding: 8px 18px;
+    padding: 14px 18px;
     margin-top: 3px;
-    background-color: salmon;
+    background-color: transparent;
     font-weight: bold;
   }
 </style>

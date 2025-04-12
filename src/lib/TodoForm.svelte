@@ -25,8 +25,6 @@
 
       taskInput = ""
       newIdx = objToAdd.id + 1
-
-      console.log(todos)
     }
   }
 </script>
