@@ -10,7 +10,7 @@
     }
   }
 
-  let areAnyCompleted = $derived(todos.some(todo => todo.completed))
+  let isNothingCompleted = $derived(!todos.some(todo => todo.completed))
 </script>
 
 <div id="container">
@@ -18,7 +18,8 @@
     <div id="clean-container">
       <button
         onclick={confirmDelete}
-        disabled={!areAnyCompleted}
+        disabled={isNothingCompleted}
+        class:disabled={isNothingCompleted}
       >
         Eliminar completados 🚮
       </button>
@@ -70,7 +71,7 @@
     text-align: center;
     position: sticky;
     top: 0;
-    background-color: lightgray;
+    background-color: #444;
   }
 
   button {
@@ -79,5 +80,11 @@
     margin-top: 3px;
     background-color: transparent;
     font-weight: bold;
+    color: #fff;
+  }
+
+  .disabled {
+    cursor: default;
+    color: #888;
   }
 </style>

@@ -40,6 +40,6 @@
     margin: 10px;
     padding: 10px;
     border-radius: 20px;
-    background-color: #60d394;
+    background-color: #5a189a;
   }
 </style>

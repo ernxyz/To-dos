@@ -5,7 +5,16 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+body, input {
+  background-color: #333;
+  color: #ddd;
+}
+
 input {
   outline: none;
   border: none;
+}
+
+button {
+  cursor: pointer;
 }
