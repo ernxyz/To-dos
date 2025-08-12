@@ -64,7 +64,7 @@
   h2 {
     text-align: center;
     font-size: 1.5rem;
-    color: #000000;
+    color: #ddd;
   }
 
   #clean-container {
