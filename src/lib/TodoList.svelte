@@ -2,6 +2,11 @@
   import { todos, deleteCompletedTodos } from "./shared.svelte";
   import TodoListItem from "./TodoListItem.svelte";
 
+  const finalTodos = $derived(todos.filter(t => !t.completed))
+  const completedTodos = $derived(todos.filter(t => t.completed))
+
+  let completedClosed = $state(true)
+
   const confirmDelete = () => {
     const resp = confirm("Confirma la eliminación de todas las tareas completadas");
 
@@ -10,11 +15,17 @@
     }
   }
 
-  let isNothingCompleted = $derived(!todos.some(todo => todo.completed))
+  const toggleCompletedSection = () => {
+    const val = completedClosed
+    console.log(val, 'val')
+    completedClosed = !val
+  }
+
+  let isNothingCompleted = $derived(completedTodos.length === 0)
 </script>
 
 <div id="container">
-  {#if todos.length !== 0}
+  {#if finalTodos.length !== 0}
     <div id="clean-container">
       <button
         onclick={confirmDelete}
@@ -26,16 +37,38 @@
     </div>
   {/if}
   <ul>
-    {#if todos.length === 0}
+    {#if finalTodos.length === 0}
       <div id="no-tasks">
         <h2>
           No hay tareas pendientes ✅
         </h2>
       </div>
     {:else}
-      {#each todos as task}
+      {#each finalTodos as task}
         <TodoListItem task={task} />
       {/each}
+    {/if}
+  </ul>
+  <ul>
+    {#if completedTodos.length > 0}
+      <div
+        id="completed-header"
+      >
+        <h3>
+          To do's completados
+        </h3>
+
+        <button
+          onclick={toggleCompletedSection}
+        >
+          { completedClosed ? '+' : '-' }
+        </button>
+      </div>
+      {#if !completedClosed}
+        {#each completedTodos as task}
+        <TodoListItem task={task} />
+        {/each}
+      {/if}
     {/if}
   </ul>
 </div>
@@ -58,7 +91,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    margin: 40px auto;
   }
 
   h2 {
@@ -67,11 +100,21 @@
     color: #ddd;
   }
 
-  #clean-container {
+  #clean-container, #completed-header {
     text-align: center;
     position: sticky;
     top: 0;
     background-color: #444;
+  }
+
+  #completed-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #completed-header > h3, #completed-header > button {
+    padding: 10px 20px;
   }
 
   button {
