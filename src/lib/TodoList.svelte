@@ -87,4 +87,14 @@
     cursor: default;
     color: #888;
   }
+
+  @media (prefers-color-scheme: light) {
+    #clean-container {
+      background-color: lightgray;
+    }
+
+    button {
+      color: #000;
+    }
+  }
 </style>

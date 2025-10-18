@@ -42,4 +42,14 @@
     border-radius: 20px;
     background-color: #5a189a;
   }
+
+  @media (prefers-color-scheme: light) {
+    #head {
+      background-color: #60d394;
+    }
+
+    h1 {
+      color: #000;
+    }
+  }
 </style>

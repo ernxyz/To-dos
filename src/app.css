@@ -6,7 +6,7 @@
 }
 
 body, input {
-  background-color: #333;
+  background-color: #011;
   color: #ddd;
 }
 
@@ -17,4 +17,15 @@ input {
 
 button {
   cursor: pointer;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #efe;
+  }
+
+  input {
+    background-color: #fff;
+    color: #000;
+  }
 }

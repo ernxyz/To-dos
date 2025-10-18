@@ -66,4 +66,10 @@
     background-color: transparent;
     font-size: 20px;
   }
+
+  @media (prefers-color-scheme: light) {
+    p {
+      color: #000;
+    }
+  }
 </style>
